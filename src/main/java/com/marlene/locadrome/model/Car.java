@@ -6,11 +6,26 @@ public class Car {
     private String model;
     private String color;
 
-    public Car(int id, String brand, String model, String color) {
+    public Car() {
+        this.brand = "";
+        this.model = "";
+        this.color = "";
+    }
+
+    public Car(int id) {
+        this();
         this.id = id;
+    }
+
+    public Car(String brand, String model, String color) {
         this.brand = brand;
         this.model = model;
         this.color = color;
+    }
+
+    public Car(int id, String brand, String model, String color) {
+        this(brand, model, color);
+        this.id = id;
     }
 
     public int getId() {

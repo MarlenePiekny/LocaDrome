@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 public class carController {
 
@@ -36,4 +34,17 @@ public class carController {
     }
 
     //DISPLAY ADD CAR FORM URI : /cars/add
+    @GetMapping(value = "/addCar")
+    public String showAddCar(Model model) {
+        model.addAttribute("car", carDao.create());
+        return "addCar";
+    }
+
+    //SAVE CAR URI : /cars/add
+    @PostMapping(value = "/addCar")
+    public String saveCar(Model model, //
+        @ModelAttribute("car") Car car) {
+        carDao.save(car);
+        return "redirect:/cars";
+    }
 }

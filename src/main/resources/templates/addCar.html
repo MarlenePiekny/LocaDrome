@@ -10,7 +10,7 @@
 <h1>Ajouter une voiture</h1>
 
 <form th:action="@{/addCar}"
-      th:object="${carForm}" method="POST">
+      th:object="${car}" method="POST">
     Marque:
     <input type="text" th:field="*{brand}" />
     <br/>

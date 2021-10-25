@@ -9,8 +9,9 @@ import java.util.List;
 @Repository
 public class CarImplDao implements CarDao {
 
-    public static List<Car> cars = new ArrayList<>();
-    static {
+    public List<Car> cars = new ArrayList<>();
+
+    public CarImplDao() {
         cars.add(new Car(1, "Renault", "Clio 2", "grise"));
         cars.add(new Car(2, "Dacia", "Sandero", "noire"));
         cars.add(new Car(3, "Volkswagen", "Golf GTI", "bleu"));
@@ -33,8 +34,13 @@ public class CarImplDao implements CarDao {
     }
 
     @Override
-    public Car save(int id, String brand, String model, String color) {
-        Car newCar = new Car(id, brand, model, color);
+    public Car create() {
+        Car createdCar = new Car(findLastCarIdCreated() +1);
+        return createdCar;
+    }
+
+    @Override
+    public Car save(Car newCar) {
         cars.add(newCar);
         return newCar;
     }
@@ -59,5 +65,9 @@ public class CarImplDao implements CarDao {
                 cars.remove(carToDelete);
             }
         }
+    }
+
+    public int findLastCarIdCreated() {
+        return cars.size();
     }
 }
