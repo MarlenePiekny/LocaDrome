@@ -48,7 +48,7 @@ public class carController {
         return "redirect:/cars";
     }
 
-    //DELETE CAR URI : /cars/{id}
+    //DELETE CAR URI : /deleteCar/{id}
     @GetMapping(value = "deleteCar/{id}")
     public String deleteCar(Model model, @PathVariable int id) {
         carDao.delete(id);
