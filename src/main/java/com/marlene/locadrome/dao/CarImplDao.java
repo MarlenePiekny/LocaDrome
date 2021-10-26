@@ -68,6 +68,6 @@ public class CarImplDao implements CarDao {
     }
 
     public int findLastCarIdCreated() {
-        return cars.size();
+        return cars.get(cars.size()-1).getId();
     }
 }

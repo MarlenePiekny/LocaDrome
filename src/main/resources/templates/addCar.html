@@ -11,6 +11,9 @@
 
 <form th:action="@{/addCar}"
       th:object="${car}" method="POST">
+    id:
+    <input type="text" th:value="*{id}" th:field="*{id}" />
+    <br/>
     Marque:
     <input type="text" th:field="*{brand}" />
     <br/>
