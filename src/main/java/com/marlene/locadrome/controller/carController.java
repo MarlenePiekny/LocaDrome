@@ -33,7 +33,7 @@ public class carController {
 
     //UPDATE CAR URI : /cars
     @PutMapping(value="/cars/{id}")
-    public void updateCar(Car car, @PathVariable int id) {
+    public void updateCar(@RequestBody Car car, @PathVariable int id) {
         carDao.update(car, id);
     }
 

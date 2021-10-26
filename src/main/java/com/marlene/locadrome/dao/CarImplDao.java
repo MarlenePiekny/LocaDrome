@@ -43,9 +43,15 @@ public class CarImplDao implements CarDao {
     public void update(Car car, int id) {
         for (Car c: cars) {
             if (c.getId() == id) {
-                car.setBrand(car.getBrand());
-                car.setModel(car.getModel());
-                car.setColor(car.getColor());
+                if (!car.getBrand().equals("")) {
+                    c.setBrand(car.getBrand());
+                }
+                if (!car.getModel().equals("")) {
+                    c.setModel(car.getModel());
+                }
+                if (!car.getColor().equals("")) {
+                    c.setColor(car.getColor());
+                }
             }
         }
     }
