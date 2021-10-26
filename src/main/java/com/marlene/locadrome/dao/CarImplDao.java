@@ -4,7 +4,7 @@ import com.marlene.locadrome.model.Car;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List
 
 @Repository
 public class CarImplDao implements CarDao {
@@ -58,11 +58,17 @@ public class CarImplDao implements CarDao {
 
     @Override
     public void delete(int id) {
-        for (Car car: cars) {
-            if (car.getId() == id) {
-                cars.remove(cars.indexOf(car));
+        cars.remove(this.getCarIndexById(id));
+    }
+
+    private int getCarIndexById(int id) {
+        for (int i = 0; i < cars.size(); i++) {
+            if (cars.get(i).getId() == id) {
+                return i;
             }
         }
+
+        throw new RuntimeException(String.format("Car with id: %d does not exist", id));
     }
 
     public int findLastCarIdCreated() {
