@@ -31,14 +31,14 @@ public class carController {
         carDao.save(car);
     }
 
-    //UPDATE CAR URI : /cars
+    //UPDATE CAR URI : /cars/{id}
     @PutMapping(value="/cars/{id}")
     public void updateCar(@RequestBody Car car, @PathVariable int id) {
         carDao.update(car, id);
     }
 
     //DELETE CAR URI : /cars/{id}
-    @RequestMapping(value = "/cars/{id}")
+    @DeleteMapping(value = "/cars/{id}")
     public void deleteCar(@PathVariable int id)  {
         carDao.delete(id);
     }
