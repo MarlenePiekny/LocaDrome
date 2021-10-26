@@ -9,6 +9,8 @@
 <body>
 <h2 th:text="${car.brand}  +  ' ' + ${car.model} + ' ' + ${car.color}"></h2>
 
+<button type="submit" th:action="@{/deleteCar/{id}(id=${car.id})}">Supprimer cette voiture</button>
+
 <a th:href="@{/cars}">Liste des voitures</a>
 
 </body>

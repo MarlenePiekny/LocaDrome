@@ -47,4 +47,11 @@ public class carController {
         carDao.save(car);
         return "redirect:/cars";
     }
+
+    //DELETE CAR URI : /cars/{id}
+    @GetMapping(value = "deleteCar/{id}")
+    public String deleteCar(Model model, @PathVariable int id) {
+        carDao.delete(id);
+        return "redirect:/";
+    }
 }

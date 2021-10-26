@@ -59,10 +59,10 @@ public class CarImplDao implements CarDao {
     }
 
     @Override
-    public void delete(Car carToDelete) {
+    public void delete(int id) {
         for (Car car: cars) {
-            if (car.getId() == carToDelete.getId()) {
-                cars.remove(carToDelete);
+            if (car.getId() == id) {
+                cars.remove(cars.indexOf(car));
             }
         }
     }
@@ -70,4 +70,5 @@ public class CarImplDao implements CarDao {
     public int findLastCarIdCreated() {
         return cars.get(cars.size()-1).getId();
     }
+
 }

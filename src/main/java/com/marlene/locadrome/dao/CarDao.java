@@ -11,6 +11,6 @@ public interface CarDao {
     public Car create();
     public Car save(Car car);
     public Car update(int id, String brand, String model, String color);
-    public void delete(Car car);
+    public void delete(int id);
 
 }
