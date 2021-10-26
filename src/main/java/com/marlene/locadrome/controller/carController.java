@@ -3,55 +3,44 @@ package com.marlene.locadrome.controller;
 import com.marlene.locadrome.dao.CarDao;
 import com.marlene.locadrome.model.Car;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
 public class carController {
 
     @Autowired
     private CarDao carDao;
 
-    //DISPLAY HOME PAGE URI : /
-    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET )
-    public String welcome() {
-        return "index";
-    }
-
-    //DISPLAY ALL CARS URI : /cars
+    //LIST ALL CARS URI : /cars
     @GetMapping(value = "/cars")
-    public String listCars(Model model) {
-        model.addAttribute("cars", carDao.findAll());
-        return "carList";
+    public List<Car> listCars(Car car) {
+        return carDao.findAll();
     }
 
-    //DISPLAY ONE CAR URI : /cars/{id}
+    //GET ONE CAR URI : /cars/{id}
     @GetMapping(value = "/cars/{id}")
-    public String displayCar(Model model, @PathVariable int id) {
-        model.addAttribute("car", carDao.findById(id));
-        return "car";
+    public Car displayCar(Car car, @PathVariable int id) {
+        return carDao.findById(id);
     }
 
-    //DISPLAY ADD CAR FORM URI : /cars/add
-    @GetMapping(value = "/addCar")
-    public String showAddCar(Model model) {
-        model.addAttribute("car", carDao.create());
-        return "addCar";
-    }
-
-    //SAVE CAR URI : /cars/add
-    @PostMapping(value = "/addCar")
-    public String saveCar(Model model, //
-        @ModelAttribute("car") Car car) {
+    //ADD CAR URI : /cars/
+    @PostMapping(value = "/cars")
+    public void saveCar(@RequestBody Car car) {
         carDao.save(car);
-        return "redirect:/cars";
     }
 
-    //DELETE CAR URI : /deleteCar/{id}
-    @GetMapping(value = "deleteCar/{id}")
-    public String deleteCar(Model model, @PathVariable int id) {
-        carDao.delete(id);
-        return "redirect:/";
+    //UPDATE CAR URI : /cars
+    @PutMapping(value="/cars/{id}")
+    public void updateCar(Car car, @PathVariable int id) {
+        carDao.update(car, id);
     }
+
+    //DELETE CAR URI : /cars/{id}
+    @RequestMapping(value = "/cars/{id}")
+    public void deleteCar(@PathVariable int id)  {
+        carDao.delete(id);
+    }
+
 }

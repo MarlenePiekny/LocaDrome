@@ -8,9 +8,8 @@ public interface CarDao {
 
     public List<Car> findAll();
     public Car findById(int id);
-    public Car create();
-    public Car save(Car car);
-    public Car update(int id, String brand, String model, String color);
+    public void save(Car car);
+    public void update(Car car, int id);
     public void delete(int id);
 
 }

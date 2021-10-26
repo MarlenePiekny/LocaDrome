@@ -34,28 +34,20 @@ public class CarImplDao implements CarDao {
     }
 
     @Override
-    public Car create() {
-        Car createdCar = new Car(findLastCarIdCreated() +1);
-        return createdCar;
+    public void save(Car car) {
+        car.setId(findLastCarIdCreated() +1);
+        cars.add(car);
     }
 
     @Override
-    public Car save(Car newCar) {
-        cars.add(newCar);
-        return newCar;
-    }
-
-    @Override
-    public Car update(int id, String brand, String model, String color) {
-        for (Car car: cars) {
-            if (car.getId() == id) {
-                car.setBrand(brand);
-                car.setModel(model);
-                car.setColor(color);
-                return car;
+    public void update(Car car, int id) {
+        for (Car c: cars) {
+            if (c.getId() == id) {
+                car.setBrand(car.getBrand());
+                car.setModel(car.getModel());
+                car.setColor(car.getColor());
             }
         }
-        return null;
     }
 
     @Override
