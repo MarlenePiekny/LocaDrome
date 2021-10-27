@@ -13,6 +13,14 @@ public class Car {
         this.color = "";
     }
 
+    public Car(String brand, String model, String color) {
+        this();
+        this.brand = brand;
+        this.model = model;
+        this.color = color;
+
+    }
+
     public Car(int id) {
         this();
         this.id = id;

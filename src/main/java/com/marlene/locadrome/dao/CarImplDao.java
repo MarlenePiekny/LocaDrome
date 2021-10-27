@@ -1,10 +1,11 @@
 package com.marlene.locadrome.dao;
 
 import com.marlene.locadrome.model.Car;
+import com.marlene.locadrome.model.CarList;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.List
+import java.util.List;
 
 @Repository
 public class CarImplDao implements CarDao {
@@ -18,9 +19,16 @@ public class CarImplDao implements CarDao {
         cars.add(new Car(4, "Porsche", "911", "noire"));
     }
 
+//    @Override
+//    public List<Car> findAll() {
+//        return cars;
+//    }
+
     @Override
-    public List<Car> findAll() {
-        return cars;
+    public CarList findAll() {
+        CarList carList = new CarList();
+        carList.setCarList(cars);
+        return carList;
     }
 
     @Override

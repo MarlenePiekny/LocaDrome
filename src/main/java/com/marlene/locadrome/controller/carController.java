@@ -2,6 +2,7 @@ package com.marlene.locadrome.controller;
 
 import com.marlene.locadrome.dao.CarDao;
 import com.marlene.locadrome.model.Car;
+import com.marlene.locadrome.model.CarList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public class carController {
 
     //LIST ALL CARS URI : /cars
     @GetMapping(value = "/cars")
-    public List<Car> listCars(Car car) {
+    public CarList listCars(Car car) {
         return carDao.findAll();
     }
 
