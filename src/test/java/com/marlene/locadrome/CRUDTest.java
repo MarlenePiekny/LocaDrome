@@ -40,7 +40,7 @@ public class CRUDTest {
     public void getAllCarsTest() {
         CarList body = testRestTemplate.getForObject("/cars", CarList.class);
         assertThat(body).isNotNull();
-        assertEquals(body.getCarList().size(), 4);
+        assertEquals(body.getCarList().size(), carDAO.findAll().getCarList().size());
     }
 //
 //    private List<Car> CarListIntoListOfCars(CarList carList) {
