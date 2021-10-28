@@ -3,8 +3,6 @@ package com.marlene.locadrome.dao;
 import com.marlene.locadrome.model.Car;
 import com.marlene.locadrome.model.CarList;
 
-import java.util.List;
-
 public interface CarDao {
 
     public CarList findAll();

@@ -1,32 +1,41 @@
 package com.marlene.locadrome;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.marlene.locadrome.dao.CarDao;
 import com.marlene.locadrome.dao.CarImplDao;
 import com.marlene.locadrome.model.Car;
 import com.marlene.locadrome.model.CarList;
+
+import junit.framework.TestCase;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CRUDTest {
+public class CRUDTest extends TestCase {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
     @Autowired
     private CarDao carDAO;
+
+
+    protected void setUp() throws Exception {
+        super.setUp();
+    }
+
+    protected void tearDown() throws Exception {
+        super.tearDown();
+
+    }
 
     @Test
     public void getOneCarTest() {
@@ -38,16 +47,10 @@ public class CRUDTest {
 
     @Test
     public void getAllCarsTest() {
-        CarList body = testRestTemplate.getForObject("/cars", CarList.class);
+        List<Car> body = testRestTemplate.getForObject("/cars", CarList.class).getCarList();
         assertThat(body).isNotNull();
-        assertEquals(body.getCarList().size(), carDAO.findAll().getCarList().size());
+        assertEquals(body.size(), carDAO.findAll().getCarList().size());
     }
-//
-//    private List<Car> CarListIntoListOfCars(CarList carList) {
-//        String[] carListString = String.valueOf(carList).split(",");
-//
-//    }
-
 
     @Test
     public void addOneCarTest() {

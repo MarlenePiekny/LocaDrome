@@ -19,11 +19,6 @@ public class CarImplDao implements CarDao {
         cars.add(new Car(4, "Porsche", "911", "noire"));
     }
 
-//    @Override
-//    public List<Car> findAll() {
-//        return cars;
-//    }
-
     @Override
     public CarList findAll() {
         CarList carList = new CarList();
