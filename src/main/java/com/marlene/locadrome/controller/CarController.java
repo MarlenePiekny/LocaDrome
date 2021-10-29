@@ -30,11 +30,11 @@ public class CarController {
         carService.save(car);
     }
 
-    //UPDATE CAR URI : /cars/{id}
-    @PutMapping(value="/cars/{id}")
-    public void updateCar(@RequestBody Car car, @PathVariable int id) {
-        carService.update(car, id);
-    }
+//    //UPDATE CAR URI : /cars/{id}
+//    @PutMapping(value="/cars/{id}")
+//    public void updateCar(@RequestBody Car car, @PathVariable int id) {
+//        carService.update(car, id);
+//    }
 
     //DELETE CAR URI : /cars/{id}
     @DeleteMapping(value = "/cars/{id}")

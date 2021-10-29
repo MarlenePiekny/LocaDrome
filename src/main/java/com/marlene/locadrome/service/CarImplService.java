@@ -6,6 +6,8 @@ import com.marlene.locadrome.model.CarList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CarImplService implements CarService {
 
@@ -18,12 +20,14 @@ public class CarImplService implements CarService {
 
     @Override
     public CarList findAll() {
-        return carDao.findAll();
+        CarList carList = new CarList();
+        carList.setCarList(carDao.findAll());
+        return carList;
     }
 
     @Override
     public Car findById(int id) {
-        return carDao.findById(id);
+        return carDao.findCarById(id);
     }
 
     @Override
@@ -33,11 +37,15 @@ public class CarImplService implements CarService {
 
     @Override
     public void update(Car car, int id) {
-        carDao.update(car, id);
+        carDao.saveAndFlush(car);
     }
 
     @Override
     public void delete(int id) {
-        carDao.delete(id);
+            carDao.delete(carDao.findCarById(id));
+    }
+
+    public int findLastCarIdCreated() {
+        return carDao.findAll().get(carDao.findAll().size()-1).getId();
     }
 }

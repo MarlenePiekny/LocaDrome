@@ -1,14 +1,9 @@
 package com.marlene.locadrome.dao;
 
 import com.marlene.locadrome.model.Car;
-import com.marlene.locadrome.model.CarList;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CarDao {
 
-    public CarList findAll();
-    public Car findById(int id);
-    public void save(Car car);
-    public void update(Car car, int id);
-    public void delete(int id);
-
+public interface CarDao extends JpaRepository<Car, Integer> {
+    public Car findCarById(int id);
 }
