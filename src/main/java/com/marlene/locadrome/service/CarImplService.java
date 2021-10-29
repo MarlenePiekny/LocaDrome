@@ -6,7 +6,6 @@ import com.marlene.locadrome.model.CarList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class CarImplService implements CarService {
@@ -32,11 +31,12 @@ public class CarImplService implements CarService {
 
     @Override
     public void save(Car car) {
-        carDao.save(car);
+        carDao.saveAndFlush(car);
     }
 
     @Override
     public void update(Car car, int id) {
+        car.setId(id);
         carDao.saveAndFlush(car);
     }
 

@@ -1,9 +1,5 @@
 package com.marlene.locadrome.model;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 
 @Entity
@@ -13,7 +9,7 @@ public class Car {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
-    @Column(name = "name", length = 30, nullable = false)
+    @Column(name = "brand", length = 30, nullable = false)
     private String brand;
     @Column(name = "model", length = 30, nullable = false)
     private String model;

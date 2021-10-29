@@ -1,14 +1,23 @@
 package com.marlene.locadrome.dao;
 
 import com.marlene.locadrome.model.Car;
-//import com.marlene.locadrome.model.CarList;
-//import org.springframework.stereotype.Repository;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
+import com.marlene.locadrome.model.CarList;
+import com.marlene.locadrome.service.CarImplService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
+
 //@Repository
-//public abstract class CarImplDao {
+//public class CarImplDao {
+//
+//    @Autowired
+//    public CarDao carDao;
+//
+//    public void save(Car car, int id) {
+//        carDao.
+//    }
 
 //    public List<Car> cars = new ArrayList<>();
 //
