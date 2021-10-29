@@ -36,7 +36,6 @@ public class CarImplService implements CarService {
 
     @Override
     public void update(Car car, int id) {
-        car.setId(id);
         carDao.saveAndFlush(car);
     }
 
@@ -45,7 +44,12 @@ public class CarImplService implements CarService {
             carDao.delete(carDao.findCarById(id));
     }
 
+    @Override
+    public void colorAllCars(String color) {
+        carDao.colorAllCars(color);
+    }
     public int findLastCarIdCreated() {
         return carDao.findAll().get(carDao.findAll().size()-1).getId();
     }
+
 }

@@ -42,4 +42,10 @@ public class CarController {
         carService.delete(id);
     }
 
+    //COLOR ALL CARS : /cars/color/{color}
+    @GetMapping(value = "/cars/color/{color}")
+    public void colorCars(@PathVariable String color) {
+        carService.colorAllCars(color);
+    }
+
 }
